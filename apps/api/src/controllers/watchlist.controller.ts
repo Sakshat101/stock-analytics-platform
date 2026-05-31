@@ -23,9 +23,11 @@ export const getWatchlist = async (
       [req.user?.userId]
     );
 
-    return res.json({
-      items: result.rows.filter((row) => row.symbol),
-    });
+    
+return res.json({
+  items: result.rows.filter((row: { symbol?: string }) => row.symbol),
+});
+
   } catch (error) {
     console.error('Get watchlist error:', error);
     return res.status(500).json({

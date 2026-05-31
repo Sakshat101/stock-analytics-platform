@@ -42,17 +42,28 @@ export const getPortfolio = async (
     );
 
     const totalHoldingsValue = holdingsResult.rows.reduce(
-      (sum, holding) => sum + Number(holding.quantity) * Number(holding.current_price),
-      0
-    );
+  (
+    sum: number,
+    holding: {
+      quantity: number;
+      current_price: number;
+    }
+  ) => sum + Number(holding.quantity) * Number(holding.current_price),
+  0
+);
 
     const totalPortfolioValue =
       Number(portfolio.cash_balance) + totalHoldingsValue;
 
     const unrealizedPnL = holdingsResult.rows.reduce(
-      (sum, holding) => sum + Number(holding.unrealized_pnl),
-      0
-    );
+  (
+    sum: number,
+    holding: {
+      unrealized_pnl: number;
+    }
+  ) => sum + Number(holding.unrealized_pnl),
+  0
+);
 
     return res.json({
       portfolio: {
