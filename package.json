@@ -1,0 +1,11 @@
+{
+  "name": "stock-analytics-platform",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev:api": "npm run dev --prefix apps/api",
+    "dev:web": "npm run dev --prefix apps/web",
+    "build:api": "npm run build --prefix apps/api",
+    "build:web": "npm run build --prefix apps/web"
+  }
+}
